@@ -118,7 +118,7 @@ module Currentuser
 
         get_with_route :test_action_requiring_user
         assert_response :redirect
-        assert_redirected_to @controller.send(:currentuser_url, :sign_in)
+        assert_redirected_to Services.currentuser_url(:sign_in)
       end
 
       # currentuser_id
@@ -140,13 +140,13 @@ module Currentuser
       # sign_in_url
 
       test 'sign_in_url returns the expected url' do
-        assert_equal 'http://localhost:3001/fake_application_id/sign_in', @controller.sign_in_url
+        assert_equal "http://localhost:3001/#{Services.configuration.application_id}/sign_in", @controller.sign_in_url
       end
 
       # sign_up_url
 
       test 'sign_up_url returns the expected url' do
-        assert_equal 'http://localhost:3001/fake_application_id/sign_up', @controller.sign_up_url
+        assert_equal "http://localhost:3001/#{Services.configuration.application_id}/sign_up", @controller.sign_up_url
       end
     end
   end

@@ -39,20 +39,18 @@ module Currentuser
       end
 
       def sign_in_url
-        return currentuser_url(:sign_in)
+        return Services.currentuser_url(:sign_in)
       end
 
       def sign_up_url
-        return currentuser_url(:sign_up)
+        return Services.currentuser_url(:sign_up)
       end
+    end
 
-      private
-        # Not unit-tested
-        def currentuser_url(action)
-          host = Services.configuration.currentuser_services_host
-          application_id = Services.configuration.application_id
-          return "#{host}/#{application_id}/#{action}"
-        end
+    def self.currentuser_url(action)
+      host = configuration.currentuser_services_host
+      application_id = configuration.application_id
+      return "#{host}/#{application_id}/#{action}"
     end
 
     # Define separate method to make stubbing easier.
