@@ -13,12 +13,20 @@ Currentuser::Services.configure do |config|
 end
 ```
 
+```ruby
+# config/routes.rb
+CurrentuserManager::Application.routes.draw do
+  currentuser
+end
+```
+
 ## Usage  (In progress)
 
 * Use `:require_currentuser` as `before_action` to protect your restricted actions
-** In these actions (and their views) you can use `currentuser_id` to retrieve the id of the connected user
-* Use `sign_up_url` and `sign_in_url` in your navigation to allow visitor to sign up and sign in
-* Build an action that calls `sign_out` to sign out connected user
+* Call `currentuser` in your routes definition
+* In any action or view, you can use `currentuser_id` to retrieve the id of the connected user (if any)
+* Use `currentuser_sign_up_url`, `currentuser_sign_in_url` and `currentuser_sign_out_url`in your navigation to allow
+ visitor to sign up, in and out
 
 
 ### Example
@@ -29,31 +37,15 @@ end
 # config/routes.rb
 MyApplication::Application.routes.draw do
   root 'main#index'
-  resources :my_resources, only: [:index]
-  resource :session, only: [:destroy]
+  get :restricted, to: 'main#restricted'
+  currentuser
 end
 ```
 
 #### Controllers
 ```ruby
 class MainController < ApplicationController
-end
-```
-```ruby
-class MyResourcesController < ApplicationController
-  before_action :require_currentuser
-
-  def index
-    render text: currentuser_id
-  end
-end
-```
-```ruby
-class SessionsController < ApplicationController
-  def destroy
-    sign_out
-    redirect_to :root
-  end
+  before_action :require_currentuser, only: :restricted
 end
 ```
 
@@ -63,9 +55,16 @@ end
 -# views/home/index.rb
 = render 'shared/menu'
 
-%h1 Welcome to this great application!
+%h1
+  Welcome!
+```
 
-= link_to 'Sign Up', sign_up_url
+```haml
+-# views/home/index.rb
+= render 'shared/menu'
+
+%h1
+  Welcome back to this restricted area, #{currentuser_id}
 ```
 
 ```haml
@@ -75,12 +74,14 @@ end
     %li
       = link_to 'Home', :root
     %li
-      = link_to 'My resources', :resources
+      = link_to 'Restricted', :restricted
     %li
-      = link_to 'Sign out', :session, method: :delete
+      = link_to 'Sign out', currentuser_sign_out_url
   - else
     %li
-      = link_to 'Sign in', sign_in_url
+      = link_to 'Sign up', currentuser_sign_up_url
+    %li
+      = link_to 'Sign in', currentuser_sign_in_url
 ```
 
 ## Contributing to currentuser-data (not recommended yet)

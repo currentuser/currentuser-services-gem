@@ -1,13 +1,10 @@
-require 'rails'
-require 'action_controller/railtie'
-
 module TestRailsApp
   class Application < Rails::Application
     config.secret_token = 'f6da1f7d3105c589bc3f36f3e78ee794'
 
     routes.draw do
       root 'test_rails_app/homes#outside'
-      get '/outside' => 'test_rails_app/homes#outside'
+      currentuser
       get '/inside' => 'test_rails_app/homes#inside'
     end
   end

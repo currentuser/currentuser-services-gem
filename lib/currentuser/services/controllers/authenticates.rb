@@ -1,49 +1,40 @@
 module Currentuser
   module Services
     module Authenticates
-      Error = Class.new(StandardError)
-      TimestampTooOld = Class.new(Error)
-      SignatureNotAuthentic = Class.new(Error)
-
-      def try_sign_in
-        return unless params[:currentuser_id] && params[:timestamp] && params[:signature]
-
-        # Check timestamp
-        unless Services.timestamp_recent?(params[:timestamp].to_i)
-          raise TimestampTooOld, 'Timestamp is more than 10 minutes old'
-        end
-
-        # Check signature
-        auth_string = [params[:currentuser_id], params[:timestamp]].join
-        unless Services.signature_authentic?(params[:signature], auth_string)
-          raise SignatureNotAuthentic, 'Signature verification failed'
-        end
-
-        # Log in
-        session[:currentuser_id] =  params[:currentuser_id]
-        @currentuser_id =  params[:currentuser_id]
-      end
-
       def require_currentuser
         return  if currentuser_id
-        redirect_to sign_in_url
+        redirect_to currentuser_sign_in_url
       end
 
       def currentuser_id
         return @currentuser_id ||= session[:currentuser_id]
       end
 
-      def sign_out
-        @currentuser_id = nil
-        session.delete(:currentuser_id)
-      end
-
-      def sign_in_url
+      def currentuser_sign_in_url
         return Services.currentuser_url(:sign_in)
       end
 
-      def sign_up_url
+      def currentuser_sign_up_url
         return Services.currentuser_url(:sign_up)
+      end
+
+      def currentuser_sign_out_url
+        return currentuser_services.sign_out_url
+      end
+    end
+
+    def self.check_authentication_params!(params)
+      raise unless params[:currentuser_id] && params[:timestamp] && params[:signature]
+
+      # Check timestamp
+      unless timestamp_recent?(params[:timestamp].to_i)
+        raise TimestampTooOld, 'Timestamp is more than 10 minutes old'
+      end
+
+      # Check signature
+      auth_string = [params[:currentuser_id], params[:timestamp]].join
+      unless signature_authentic?(params[:signature], auth_string)
+        raise SignatureNotAuthentic, 'Signature verification failed'
       end
     end
 
@@ -54,12 +45,14 @@ module Currentuser
       return "#{host}/#{application_id}/#{action}"
     end
 
-    # Define separate method to make stubbing easier.
+    Error = Class.new(StandardError)
+    TimestampTooOld = Class.new(Error)
+    SignatureNotAuthentic = Class.new(Error)
+
     def self.timestamp_recent?(timestamp)
       return (Time.now - Time.at(timestamp)).abs < 10 * 60
     end
 
-    # Define separate method to make stubbing easier.
     def self.signature_authentic?(signature, auth_string)
       public_key = Services.configuration.currentuser_services_public_key
       return EncryptoSigno.verify(public_key, signature, auth_string)

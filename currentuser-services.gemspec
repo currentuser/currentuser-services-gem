@@ -25,10 +25,13 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
+    "app/controllers/currentuser/services/sessions_controller.rb",
     "config/currentuser-services_public_key.txt",
+    "config/routes.rb",
     "currentuser-services.gemspec",
     "lib/currentuser/services.rb",
     "lib/currentuser/services/controllers/authenticates.rb",
+    "lib/currentuser/services/engine.rb",
     "test/currentuser/services/authenticates_test.rb",
     "test/currentuser/services/integration_test.rb",
     "test/currentuser/services_test.rb",
@@ -46,7 +49,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<gem_config>, [">= 0"])
       s.add_runtime_dependency(%q<encrypto_signo>, [">= 0"])
-      s.add_runtime_dependency(%q<actionpack>, [">= 0"])
+      s.add_runtime_dependency(%q<rails>, [">= 0"])
       s.add_development_dependency(%q<awesome_print>, [">= 0"])
       s.add_development_dependency(%q<minitest-reporters>, [">= 0"])
       s.add_development_dependency(%q<dotenv>, [">= 0"])
@@ -59,7 +62,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<gem_config>, [">= 0"])
       s.add_dependency(%q<encrypto_signo>, [">= 0"])
-      s.add_dependency(%q<actionpack>, [">= 0"])
+      s.add_dependency(%q<rails>, [">= 0"])
       s.add_dependency(%q<awesome_print>, [">= 0"])
       s.add_dependency(%q<minitest-reporters>, [">= 0"])
       s.add_dependency(%q<dotenv>, [">= 0"])
@@ -73,7 +76,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<gem_config>, [">= 0"])
     s.add_dependency(%q<encrypto_signo>, [">= 0"])
-    s.add_dependency(%q<actionpack>, [">= 0"])
+    s.add_dependency(%q<rails>, [">= 0"])
     s.add_dependency(%q<awesome_print>, [">= 0"])
     s.add_dependency(%q<minitest-reporters>, [">= 0"])
     s.add_dependency(%q<dotenv>, [">= 0"])

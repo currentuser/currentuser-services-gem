@@ -1,6 +1,8 @@
 require 'gem_config'
 require 'encrypto_signo'
+require 'rails'
 require 'currentuser/services/controllers/authenticates'
+require 'currentuser/services/engine'
 
 module Currentuser
   module Services
@@ -25,11 +27,19 @@ Currentuser::Services.configure do |config|
   )
 end
 
-
 module ActionController
   class Base
     include Currentuser::Services::Authenticates
-    before_action :try_sign_in
-    helper_method :currentuser_id, :sign_in_url, :sign_up_url
+    helper_method :currentuser_id, :currentuser_sign_in_url, :currentuser_sign_up_url, :currentuser_sign_out_url
   end
 end
+
+class ActionDispatch::Routing::Mapper
+  def currentuser
+    mount Currentuser::Services::Engine => '/currentuser'
+  end
+end
+
+# For an unclear reason, we have to require this file late in the process, otherwise using application have
+# problems on start up
+require 'controllers/currentuser/services/sessions_controller'
