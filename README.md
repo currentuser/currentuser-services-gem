@@ -15,7 +15,7 @@ end
 
 ```ruby
 # config/routes.rb
-CurrentuserManager::Application.routes.draw do
+MyApplication::Application.routes.draw do
   currentuser
 end
 ```
@@ -27,6 +27,12 @@ end
 * In any action or view, you can use `currentuser_id` to retrieve the id of the connected user (if any)
 * Use `currentuser_sign_up_url`, `currentuser_sign_in_url` and `currentuser_sign_out_url`in your navigation to allow
  visitor to sign up, in and out
+
+That's all! Note that :
+
+* you don't need to generate and run migrations. Currentuser does NOT rely on your database
+* you don't need to generate a complicated configuration file. Currentuser is so simple for now that there would not
+ be much to configure but, in the future, we intend to propose most of the configuration outside of your application.
 
 
 ### Example
@@ -42,7 +48,7 @@ MyApplication::Application.routes.draw do
 end
 ```
 
-#### Controllers
+#### Controller
 ```ruby
 class MainController < ApplicationController
   before_action :require_currentuser, only: :restricted
@@ -60,7 +66,7 @@ end
 ```
 
 ```haml
--# views/home/index.rb
+-# views/home/restricted.rb
 = render 'shared/menu'
 
 %h1
