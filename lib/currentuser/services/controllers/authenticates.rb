@@ -50,6 +50,7 @@ module Currentuser
     def self.currentuser_url(action)
       host = configuration.currentuser_services_host
       application_id = configuration.application_id
+      raise 'application_id should be set'  unless application_id
       return "#{host}/#{application_id}/#{action}"
     end
 
