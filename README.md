@@ -1,18 +1,26 @@
 # currentuser-services
 
-This is an experimental project. It should not be used for now.
+This is an experimental project. It should not (and can not anyway) be used for now.
+
+If you want to manage your own sign_up, sign_in and sign_out actions you should use the gem `currentuser-data` instead.
 
 ## Configuration (In progress)
 
 Create your application on ...
 
+Add `currentuser-services` gem in your `Gemfile`:
 ```ruby
-# config/initializers/currentuser.rb
+# Gemfile
+gem 'currentuser-services'
+```
+Add an initializer file:
+```ruby
+# config/initializers/currentuser.rb (the exact name of the file has no impact)
 Currentuser::Services.configure do |config|
   config.application_id = 'your_app_id'
 end
 ```
-
+Call `currentuser` in your routes definition:
 ```ruby
 # config/routes.rb
 MyApplication::Application.routes.draw do
@@ -22,18 +30,15 @@ end
 
 ## Usage  (In progress)
 
-* Use `:require_currentuser` as `before_action` to protect your restricted actions
-* Call `currentuser` in your routes definition
-* In any action or view, you can use `currentuser_id` to retrieve the id of the connected user (if any)
 * Use `currentuser_sign_up_url`, `currentuser_sign_in_url` and `currentuser_sign_out_url`in your navigation to allow
  visitor to sign up, in and out
+* Use `:require_currentuser` as `before_action` to protect your restricted actions
+* In any action or view, you can use `currentuser_id` to retrieve the id of the connected user (if any)
 
 That's all! Note that :
 
 * you don't need to generate and run migrations. Currentuser does NOT rely on your database
-* you don't need to generate a complicated configuration file. Currentuser is so simple for now that there would not
- be much to configure but, in the future, we intend to propose most of the configuration outside of your application.
-
+* you don't need to generate, analyse and modify a complicated configuration file.
 
 ### Example
 
@@ -49,6 +54,7 @@ end
 ```
 
 #### Controller
+
 ```ruby
 class MainController < ApplicationController
   before_action :require_currentuser, only: :restricted
