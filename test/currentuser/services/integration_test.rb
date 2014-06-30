@@ -70,6 +70,12 @@ module Currentuser
         visit '/inside'
         assert has_text? 'Private page'
       end
+
+      test 'available' do
+        visit '/currentuser'
+
+        assert_equal 200, page.status_code
+      end
     end
   end
 end

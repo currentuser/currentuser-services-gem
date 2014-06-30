@@ -16,6 +16,10 @@ module Currentuser
 
         redirect_to '/'
       end
+
+      def available
+        head :ok
+      end
     end
   end
 

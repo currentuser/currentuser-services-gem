@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["eric-currentuser"]
-  s.date = "2014-06-26"
+  s.date = "2014-06-27"
   s.description = "TBD"
   s.email = "TBD"
   s.extra_rdoc_files = [
@@ -55,7 +55,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<dotenv>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 2.0.1"])
-      s.add_development_dependency(%q<rails>, [">= 0"])
       s.add_development_dependency(%q<minitest-rails-capybara>, [">= 0"])
       s.add_development_dependency(%q<capybara-mechanize>, [">= 0"])
       s.add_development_dependency(%q<currentuser-data>, [">= 0"])
@@ -68,7 +67,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<dotenv>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0"])
       s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
-      s.add_dependency(%q<rails>, [">= 0"])
       s.add_dependency(%q<minitest-rails-capybara>, [">= 0"])
       s.add_dependency(%q<capybara-mechanize>, [">= 0"])
       s.add_dependency(%q<currentuser-data>, [">= 0"])
@@ -82,7 +80,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<dotenv>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0"])
     s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
-    s.add_dependency(%q<rails>, [">= 0"])
     s.add_dependency(%q<minitest-rails-capybara>, [">= 0"])
     s.add_dependency(%q<capybara-mechanize>, [">= 0"])
     s.add_dependency(%q<currentuser-data>, [">= 0"])
