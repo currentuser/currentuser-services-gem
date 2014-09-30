@@ -35,7 +35,7 @@ end
 * Use `:require_currentuser` as `before_action` to protect your restricted actions
 * In any action or view, you can use `currentuser_id` to retrieve the id of the connected user (if any)
 
-That's all! Note that :
+That's all! Note that:
 
 * you don't need to generate and run migrations. Currentuser does NOT rely on your database
 * you don't need to generate, analyse and modify a complicated configuration file.
