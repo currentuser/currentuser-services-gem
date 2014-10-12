@@ -39,12 +39,13 @@ module Currentuser
     end
 
     def self.currentuser_url(action)
-      return currentuser_url_for_application_id( configuration.application_id, action)
+      return currentuser_url_for_application_id(configuration.application_id, action)
     end
 
     def self.currentuser_url_for_application_id(application_id, action)
       host = configuration.currentuser_services_host
       raise 'application_id should be set'  unless application_id
+      raise 'action should be :sign_up or :sign_in'  unless action.in?([:sign_up, :sign_in])
       return "#{host}/#{application_id}/#{action}"
     end
 
