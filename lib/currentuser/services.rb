@@ -21,7 +21,7 @@ module Currentuser
 end
 
 Currentuser::Services.configure do |config|
-  config.currentuser_services_host = 'http://localhost:3001'
+  config.currentuser_services_host = 'http://services.currentuser.io'
   config.currentuser_services_public_key = File.read(
     File.join(File.dirname(__FILE__), '..', '..', 'config', 'currentuser-services_public_key.txt')
   )
