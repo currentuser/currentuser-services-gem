@@ -6,7 +6,7 @@ If you want to manage your own sign_up, sign_in and sign_out actions you should 
 
 ## Configuration (In progress)
 
-Create your application on ...
+Create your project on ...
 
 Add `currentuser-services` gem in your `Gemfile`:
 ```ruby
@@ -17,7 +17,7 @@ Add an initializer file:
 ```ruby
 # config/initializers/currentuser.rb (the exact name of the file has no impact)
 Currentuser::Services.configure do |config|
-  config.application_id = 'your_app_id'
+  config.project_id = 'your_app_id'
 end
 ```
 Call `currentuser` in your routes definition:

@@ -17,5 +17,10 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'currentuser/services'
 
 Currentuser::Services.configure do |config|
-  config.application_id = ENV['CURRENTUSER_APPLICATION_ID_FOR_TESTS']
+  config.project_id = ENV['CURRENTUSER_PROJECT_ID_FOR_TESTS']
+end
+
+Currentuser::Services.configure do |config|
+  config.currentuser_services_host = ENV['CURRENTUSER_SERVICES_HOST']
+  config.currentuser_services_public_key = ENV['CURRENTUSER_SERVICES_PUBLIC_KEY']
 end

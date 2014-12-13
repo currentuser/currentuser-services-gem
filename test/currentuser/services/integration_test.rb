@@ -17,8 +17,8 @@ require 'currentuser/data/test/helpers'
 Rails.logger = Logger.new('/dev/null')
 
 Currentuser::Data::BaseResource.site = ENV['CURRENTUSER_DATA_URL']
-Currentuser::Data::Test::UseReadApi.currentuser_application_id_for_tests =
-    Currentuser::Services.configuration.application_id
+Currentuser::Data::Test::UseReadApi.currentuser_project_id_for_tests =
+    Currentuser::Services.configuration.project_id
 
 module Currentuser
   module Services

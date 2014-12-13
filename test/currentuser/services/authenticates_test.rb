@@ -55,13 +55,13 @@ module Currentuser
       # sign_in_url
 
       test 'sign_in_url returns the expected url' do
-        assert_equal "http://localhost:3001/#{Services.configuration.application_id}/sign_in", @controller.currentuser_sign_in_url
+        assert_equal "http://localhost:3001/#{Services.configuration.project_id}/sign_in", @controller.currentuser_sign_in_url
       end
 
       # sign_up_url
 
       test 'sign_up_url returns the expected url' do
-        assert_equal "http://localhost:3001/#{Services.configuration.application_id}/sign_up", @controller.currentuser_sign_up_url
+        assert_equal "http://localhost:3001/#{Services.configuration.project_id}/sign_up", @controller.currentuser_sign_up_url
       end
     end
   end

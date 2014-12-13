@@ -10,12 +10,12 @@ module Currentuser
 
     with_configuration do
       # Public API
-      has :application_id, classes: String
+      has :project_id, classes: String
 
       # Developer API
       has :currentuser_services_host, classes: String
       has :currentuser_services_public_key, classes: String
-      has :currentuser_application_id_for_tests, classes: String
+      has :currentuser_project_id_for_tests, classes: String
     end
   end
 end
