@@ -1,12 +1,12 @@
 # currentuser-services
 
-This is an experimental project. It should not (and can not anyway) be used for now.
+Offsite sign up and sign in forms for [Currentuser.io](http://www.currentuser.io).
 
 If you want to manage your own sign_up, sign_in and sign_out actions you should use the gem `currentuser-data` instead.
 
-## Configuration (In progress)
+## Configuration
 
-Create your project on ...
+Create your project on [Currentuser.io](http://www.currentuser.io).
 
 Add `currentuser-services` gem in your `Gemfile`:
 ```ruby
@@ -17,7 +17,7 @@ Add an initializer file:
 ```ruby
 # config/initializers/currentuser.rb (the exact name of the file has no impact)
 Currentuser::Services.configure do |config|
-  config.project_id = 'your_app_id'
+  config.project_id = 'your_project_id'
 end
 ```
 Call `currentuser` in your routes definition:
@@ -28,7 +28,7 @@ MyApplication::Application.routes.draw do
 end
 ```
 
-## Usage  (In progress)
+## Usage
 
 * Use `currentuser_sign_up_url`, `currentuser_sign_in_url` and `currentuser_sign_out_url`in your navigation to allow
  visitor to sign up, in and out
