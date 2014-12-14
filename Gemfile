@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 # Add dependencies required to use your gem here.
 gem 'gem_config'
 gem 'encrypto_signo'
-gem 'rails', '~>4.0.0' # Rails 4.1 may need adaptations.
+gem 'rails', '~>4.0'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
