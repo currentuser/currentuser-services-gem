@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.authors = ["eric-currentuser"]
   s.date = "2014-12-15"
-  s.description = "Offsite sign up and sign in forms for [Currentuser.io](http://www.currentuser.io)"
+  s.description = "Offsite sign up and sign in forms for Currentuser.io"
   s.email = "TBD"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/currentuser/currentuser-services-gem"
   s.licenses = ["MIT"]
   s.rubygems_version = "2.2.2"
-  s.summary = "Offsite sign up and sign in forms for [Currentuser.io](http://www.currentuser.io)"
+  s.summary = "Offsite sign up and sign in forms for Currentuser.io"
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
