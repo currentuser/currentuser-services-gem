@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = 'currentuser-services'
   gem.homepage = 'http://github.com/currentuser/currentuser-services-gem'
   gem.license = 'MIT'
-  gem.summary = %Q{Offsite sign up and sign in forms for [Currentuser.io](http://www.currentuser.io)}
-  gem.description = %Q{Offsite sign up and sign in forms for [Currentuser.io](http://www.currentuser.io)}
+  gem.summary = %Q{Offsite sign up and sign in forms for Currentuser.io}
+  gem.description = %Q{Offsite sign up and sign in forms for Currentuser.io}
   gem.email = 'TBD'
   gem.authors = ["eric-currentuser"]
   # dependencies defined in Gemfile

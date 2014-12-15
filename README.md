@@ -4,6 +4,8 @@ Offsite sign up and sign in forms for [Currentuser.io](http://www.currentuser.io
 
 If you want to manage your own sign_up, sign_in and sign_out actions you should use the gem `currentuser-data` instead.
 
+[![Gem Version](https://badge.fury.io/rb/currentuser-services.svg)](http://badge.fury.io/rb/currentuser-services)
+
 ## Configuration
 
 Create your project on [Currentuser.io](http://www.currentuser.io).
