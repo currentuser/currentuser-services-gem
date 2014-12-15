@@ -64,7 +64,7 @@ end
 #### Views
 
 ```haml
--# views/home/index.rb
+-# views/home/index.html.haml
 = render 'shared/menu'
 
 %h1
@@ -72,7 +72,7 @@ end
 ```
 
 ```haml
--# views/home/restricted.rb
+-# views/home/restricted.html.haml
 = render 'shared/menu'
 
 %h1
@@ -96,7 +96,7 @@ end
       = link_to 'Sign in', currentuser_sign_in_url
 ```
 
-## Contributing to currentuser-data (not recommended yet)
+## Contributing to currentuser-services (not recommended yet)
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
