@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = 'currentuser-services'
-  gem.homepage = 'http://github.com/currentuser/currentuser-services-gem'
+  gem.homepage = 'http://www.currentuser.io'
   gem.license = 'MIT'
   gem.summary = %Q{Offsite sign up and sign in forms for Currentuser.io}
   gem.description = %Q{Offsite sign up and sign in forms for Currentuser.io}

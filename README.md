@@ -32,7 +32,7 @@ end
 
 ## Usage
 
-* Use `currentuser_sign_up_url`, `currentuser_sign_in_url` and `currentuser_sign_out_url`in your navigation to allow
+* Use `currentuser_sign_up_url` (GET), `currentuser_sign_in_url` (GET) and `currentuser_sign_out_url` (DELETE) in your navigation to allow
  visitor to sign up, in and out
 * Use `:require_currentuser` as `before_action` to protect your restricted actions
 * In any action or view, you can use `currentuser_id` to retrieve the id of the connected user (if any)
@@ -84,13 +84,13 @@ end
 ```haml
 -# views/shared/_menu.html.haml
 %ul
+  %li
+    = link_to 'Home', :root
   - if currentuser_id
-    %li
-      = link_to 'Home', :root
     %li
       = link_to 'Restricted', :restricted
     %li
-      = link_to 'Sign out', currentuser_sign_out_url
+      = button_to 'Sign out', currentuser_sign_out_url, method: :delete
   - else
     %li
       = link_to 'Sign up', currentuser_sign_up_url
