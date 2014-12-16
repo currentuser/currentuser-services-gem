@@ -17,7 +17,10 @@ module TestRailsApp
     end
 
     def inside
-      render text: 'Private page'
+      render inline: "
+        Private page
+        <%= button_to 'Sign out', 'currentuser/sign_out', method: :delete %>
+      "
     end
   end
 end

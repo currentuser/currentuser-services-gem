@@ -51,7 +51,7 @@ module Currentuser
         assert_equal '/inside', current_path
         assert has_text? 'Private page'
 
-        visit 'currentuser/sign_out'
+        click_button 'Sign out'
         assert_equal '/', current_path
 
         visit '/inside'
