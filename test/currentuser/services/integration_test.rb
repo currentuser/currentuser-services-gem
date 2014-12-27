@@ -10,15 +10,8 @@ require 'test_application/application'
 require 'minitest/rails/capybara'
 require 'capybara/mechanize'
 
-require 'currentuser/data'
-require 'currentuser/data/test/helpers'
-
 #Rails.logger = Logger.new(STDOUT)
 Rails.logger = Logger.new('/dev/null')
-
-Currentuser::Data::BaseResource.site = ENV['CURRENTUSER_DATA_URL']
-Currentuser::Data::Test::UseReadApi.currentuser_project_id_for_tests =
-    Currentuser::Services.configuration.project_id
 
 module Currentuser
   module Services

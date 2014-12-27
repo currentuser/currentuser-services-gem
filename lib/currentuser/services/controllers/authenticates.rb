@@ -6,8 +6,12 @@ module Currentuser
         redirect_to currentuser_sign_in_url
       end
 
+      def currentuser_session
+        return session[:currentuser]
+      end
+
       def currentuser_id
-        return @currentuser_id ||= session[:currentuser_id]
+        return @currentuser_id ||= currentuser_session && currentuser_session[:id]
       end
 
       def currentuser_sign_in_url

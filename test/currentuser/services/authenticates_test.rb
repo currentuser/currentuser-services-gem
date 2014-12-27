@@ -30,26 +30,39 @@ module Currentuser
       # require_currentuser
 
       test 'execute action if currentuser_id is available' do
-        session[:currentuser_id] = 'user_id_1'
+        session[:currentuser] = {id: 'user_id_1'}
 
         get_with_route :test_action_requiring_user
         assert_response :ok
       end
 
       test 'redirects to sign_in URL if currentuser_id is not available' do
-        assert_nil session[:currentuser_id]
+        assert_nil session[:currentuser]
 
         get_with_route :test_action_requiring_user
         assert_response :redirect
         assert_redirected_to Services.currentuser_url(:sign_in)
       end
 
+      # currentuser_session
+
+      test 'currentuser_session returns currentuser session' do
+        session[:currentuser] = {foo: 'blah'}
+
+        assert_equal({foo: 'blah'}, @controller.currentuser_session)
+      end
+
       # currentuser_id
 
       test 'currentuser_id returns currentuser ID' do
-        session[:currentuser_id] = 'user_id_1'
+        session[:currentuser] = {id: 'user_id_1'}
 
         assert_equal 'user_id_1', @controller.currentuser_id
+      end
+
+      test 'currentuser_id returns nil if no current user session' do
+        refute session.key?(:currentuser)
+        assert_nil @controller.currentuser_id
       end
 
       # sign_in_url
