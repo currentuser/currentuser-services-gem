@@ -43,6 +43,7 @@ module Currentuser
         visit '/inside'
         assert_equal '/inside', current_path
         assert has_text? 'Private page'
+        assert has_no_text? 'Sign Up'
 
         click_button 'Sign out'
         assert_equal '/', current_path
@@ -60,9 +61,10 @@ module Currentuser
         assert_equal '/', current_path
         assert has_text? 'Public page'
 
-        # Check user is connected
+        # Check user is connected, and Sign Up is set
         visit '/inside'
         assert has_text? 'Private page'
+        assert has_text? 'Sign Up'
       end
 
       test 'available' do

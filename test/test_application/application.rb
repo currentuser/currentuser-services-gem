@@ -20,6 +20,7 @@ module TestRailsApp
       render inline: "
         Private page
         <%= button_to 'Sign out', 'currentuser/sign_out', method: :delete %>
+        <% if currentuser_session[:sign_up] %>Sign Up<% end %>
       "
     end
   end

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 ##
+
+**Feature**
+
+* Add `currentuser_session` as helper (undocumented)
+
 ## 0.2.0
 
 **Feature**

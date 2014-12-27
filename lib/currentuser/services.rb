@@ -30,7 +30,7 @@ end
 module ActionController
   class Base
     include Currentuser::Services::Authenticates
-    helper_method :currentuser_id, :currentuser_sign_in_url, :currentuser_sign_up_url, :currentuser_sign_out_url
+    helper_method :currentuser_session, :currentuser_id, :currentuser_sign_in_url, :currentuser_sign_up_url, :currentuser_sign_out_url
   end
 end
 
