@@ -39,7 +39,3 @@ class ActionDispatch::Routing::Mapper
     mount Currentuser::Services::Engine => '/currentuser'
   end
 end
-
-# For an unclear reason, we have to require this file late in the process, otherwise using application have
-# problems on start up
-require 'controllers/currentuser/services/sessions_controller'

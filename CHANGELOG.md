@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2 ##
+
+** Bugfix **
+
+* Fix controller requirement for ruby 2.1+
+
 ## 0.2.1 ##
 
 **Feature**

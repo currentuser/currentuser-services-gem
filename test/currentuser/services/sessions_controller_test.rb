@@ -1,4 +1,5 @@
 require 'helper'
+require_relative '../../../app/controllers/currentuser/services/sessions_controller'
 
 module Currentuser
   module Services
