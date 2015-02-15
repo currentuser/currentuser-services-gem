@@ -2,7 +2,7 @@
 
 ## 0.2.2 ##
 
-** Bugfix **
+** Bugfix**
 
 * Fix controller requirement for ruby 2.1+
 
