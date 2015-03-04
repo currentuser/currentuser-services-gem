@@ -11,7 +11,7 @@ module Currentuser
       end
 
       def currentuser_id
-        return @currentuser_id ||= currentuser_session && currentuser_session[:id]
+        return @currentuser_id ||= currentuser_session && currentuser_session['id']
       end
 
       def currentuser_sign_in_url

@@ -30,7 +30,7 @@ module Currentuser
       # require_currentuser
 
       test 'execute action if currentuser_id is available' do
-        session[:currentuser] = {id: 'user_id_1'}
+        session[:currentuser] = {'id' => 'user_id_1'}
 
         get_with_route :test_action_requiring_user
         assert_response :ok
@@ -47,15 +47,15 @@ module Currentuser
       # currentuser_session
 
       test 'currentuser_session returns currentuser session' do
-        session[:currentuser] = {foo: 'blah'}
+        session[:currentuser] = {'foo' => 'blah'}
 
-        assert_equal({foo: 'blah'}, @controller.currentuser_session)
+        assert_equal({'foo' => 'blah'}, @controller.currentuser_session)
       end
 
       # currentuser_id
 
       test 'currentuser_id returns currentuser ID' do
-        session[:currentuser] = {id: 'user_id_1'}
+        session[:currentuser] = {'id' => 'user_id_1'}
 
         assert_equal 'user_id_1', @controller.currentuser_id
       end

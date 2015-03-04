@@ -1,8 +1,14 @@
 # Changelog
 
+## 0.2.3 ##
+
+**Bugfix**
+
+* Don't use symbol in session values, as they may be stringified with Rails 4.2.0
+
 ## 0.2.2 ##
 
-** Bugfix**
+**Bugfix**
 
 * Fix controller requirement for ruby 2.1+
 

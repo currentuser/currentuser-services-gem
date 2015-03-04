@@ -38,8 +38,8 @@ module Currentuser
         end
 
         assert_redirected_to '/'
-        assert_equal({id: user_id}, session[:currentuser])
-        refute session[:currentuser].has_key?(:sign_up)
+        assert_equal({'id' => user_id}, session[:currentuser])
+        refute session[:currentuser].has_key?('sign_up')
       end
 
       test 'sign_in sets sign_up if sign_up is true' do
@@ -54,7 +54,7 @@ module Currentuser
         end
 
         assert_redirected_to '/'
-        assert_equal true, session[:currentuser][:sign_up]
+        assert_equal true, session[:currentuser]['sign_up']
       end
 
       # This test proves that we use Services#check_authentication_params!
@@ -70,13 +70,13 @@ module Currentuser
       # sign_out
 
       test 'sign_out deletes session and redirects to root' do
-        session_hash = {currentuser: {foo: :blah}, other_key: :other_value}
+        session_hash = {currentuser: {'foo' => 'blah'}, other_key: 'other_value'}
 
         delete_with_route :sign_out, {}, session_hash
         assert_redirected_to '/'
 
         assert_nil session[:currentuser]
-        assert_equal :other_value, session[:other_key]
+        assert_equal 'other_value', session[:other_key]
       end
 
       # available

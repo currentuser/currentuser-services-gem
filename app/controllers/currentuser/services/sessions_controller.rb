@@ -5,10 +5,16 @@ module Currentuser
       def sign_in
         Services.check_authentication_params!(params)
 
+        # Note: in this method, we create an hash with string keys because, with Rails 4.2.0, keys are stringified
+        # between two requests if session is stored in a json cookie (which is the default behavior for Rails 4.2.0).
+        hash = {}
+
         # Log in
-        session[:currentuser] = {id: params[:currentuser_id]}
+        hash['id'] = params[:currentuser_id]
         # Note that params[:sign_up] should equal 'true' (String) or should be absent.
-        session[:currentuser][:sign_up] = true  if params[:sign_up]
+        hash['sign_up'] = true  if params[:sign_up]
+
+        session[:currentuser] = hash
 
         redirect_to '/'
       end
